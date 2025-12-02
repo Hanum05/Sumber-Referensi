@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumber Referensi Karya Ilmiah</title>
+    <!-- Memuat Tailwind CSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Mengatur font default Inter dan tampilan modern */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Warna latar belakang sangat terang */
+            background-image: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Gradien halus */
+            min-height: 100vh;
+        }
+        /* Styling untuk card referensi */
+        .reference-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #3b82f6; /* Border biru saat di-hover */
+        }
+        /* Custom styling for link preview section */
+        .link-preview {
+            background-color: #eff6ff; /* Background biru muda */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto px-4 py-12">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2 tracking-tight">
+                Sumber Referensi
+            </h1>
+            <p class="text-lg text-gray-600">
+                Kumpulan pranala (link) ilmiah yang digunakan dalam penyusunan karya.
+            </p>
+        </header>
+
+        <!-- Daftar Referensi dalam Grid Responsif -->
+        <div id="references-grid" class="grid gap-6 grid-cols-2 lg:grid-cols-4">
+            
+            <!-- Data Referensi (diulang untuk setiap sumber) -->
+            <!-- CARD 1 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2018.1454946#d1e265" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Stabilitas Emulsi Minyak Cengkeh dalam Matriks Kitosan</h2>
+                        <p class="text-sm text-gray-500">Analisis sifat fisik dan antimikroba emulsi yang menggunakan minyak cengkeh dalam matriks polimer alami.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://www.scielo.br/j/babt/a/mBcQkLmpjJFBhhcpQ6pGHMz/?format=html&lang=en" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Pemanfaatan Bioteknologi dalam Pertanian Modern</h2>
+                        <p class="text-sm text-gray-500">Tinjauan mengenai aplikasi bioteknologi terbaru yang digunakan untuk peningkatan hasil dan kualitas tanaman pangan.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://snhrp.unipasby.ac.id/prosiding/index.php/snhrp/article/view/685/" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Implikasi Hukum Riset Pemasaran dan Perlindungan Konsumen</h2>
+                        <p class="text-sm text-gray-500">Kajian tentang kerangka hukum yang mengatur praktik riset pemasaran dan dampaknya terhadap hak-hak konsumen.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://etd.repository.ugm.ac.id/home/detail_pencarian_downloadfiles/815672" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Analisis Model Pengambilan Keputusan Investor Ritel</h2>
+                        <p class="text-sm text-gray-500">Tesis yang menganalisis faktor-faktor psikologis dan ekonomi yang memengaruhi keputusan investasi oleh investor individu di pasar modal.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://jbkt.ub.ac.id/index.php/jbkt/article/viewFile/136/124Bhande" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Efektivitas Senyawa Bioaktif terhadap Parasit Tropis</h2>
+                        <p class="text-sm text-gray-500">Penelitian eksperimental mengenai potensi senyawa alami dalam menghambat pertumbuhan dan penyebaran parasit penyebab penyakit tropis.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- CARD 6 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11870168/" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Perkembangan Vaksin mRNA dan Respons Imun Tubuh</h2>
+                        <p class="text-sm text-gray-500">Sebuah artikel yang mengulas mekanisme kerja, efikasi, dan tantangan terkini dalam pengembangan vaksin berbasis mRNA.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- CARD 7 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://www.mdpi.com/2673-4176/4/2/8" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Aplikasi Lapisan Edibel Berbasis Polisakarida</h2>
+                        <p class="text-sm text-gray-500">Peningkatan kualitas makanan dan bioaktivitas melalui penggunaan lapisan tipis yang dapat dimakan untuk memperpanjang masa simpan buah dan sayuran.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CARD 8 -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
+                <a href="https://www.intechopen.com/chapters/79752" target="_blank" rel="noopener noreferrer" class="block h-full">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Tantangan dan Prospek Energi Terbarukan di Asia Tenggara</h2>
+                        <p class="text-sm text-gray-500">Bab buku yang mengupas isu-isu terkini, kebijakan, dan masa depan implementasi teknologi energi hijau di kawasan Asia Tenggara.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <!-- Akhir Daftar Referensi -->
+
+        <footer class="text-center mt-12 pt-6 border-t border-gray-300">
+            <p class="text-sm text-gray-500">
+                <span class="font-bold">Catatan:</span> Klik pada kotak referensi untuk langsung menuju ke sumber asli.
+            </p>
+        </footer>
+    </div>
+
+</body>
+              </html>
