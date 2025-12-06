@@ -27,6 +27,9 @@
         .link-preview {
             background-color: #eff6ff; /* Background biru muda */
         }
+        .link-icon {
+            color: #3b82f6; /* Pastikan semua ikon tautan berwarna biru */
+        }
     </style>
 </head>
 <body>
@@ -45,117 +48,131 @@
         <!-- Daftar Referensi dalam Grid Responsif -->
         <div id="references-grid" class="grid gap-6 grid-cols-2 lg:grid-cols-4">
             
-            <!-- Data Referensi (diulang untuk setiap sumber) -->
             <!-- CARD 1 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2018.1454946#d1e265" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-1">
+                <a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2018.1454946#d1e265" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Stabilitas Emulsi Minyak Cengkeh dalam Matriks Kitosan</h2>
-                        <p class="text-sm text-gray-500">Analisis sifat fisik dan antimikroba emulsi yang menggunakan minyak cengkeh dalam matriks polimer alami.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-1">Stabilitas Emulsi Minyak Cengkeh dalam Matriks Kitosan</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-1">Analisis sifat fisik dan antimikroba emulsi yang menggunakan minyak cengkeh dalam matriks polimer alami.</p>
+                </div>
             </div>
 
             <!-- CARD 2 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://www.scielo.br/j/babt/a/mBcQkLmpjJFBhhcpQ6pGHMz/?format=html&lang=en" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-2">
+                <a href="https://www.scielo.br/j/babt/a/mBcQkLmpjJFBhhcpQ6pGHMz/?format=html&lang=en" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Pemanfaatan Bioteknologi dalam Pertanian Modern</h2>
-                        <p class="text-sm text-gray-500">Tinjauan mengenai aplikasi bioteknologi terbaru yang digunakan untuk peningkatan hasil dan kualitas tanaman pangan.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-2">Pemanfaatan Bioteknologi dalam Pertanian Modern</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-2">Tinjauan mengenai aplikasi bioteknologi terbaru yang digunakan untuk peningkatan hasil dan kualitas tanaman pangan.</p>
+                </div>
             </div>
 
             <!-- CARD 3 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://snhrp.unipasby.ac.id/prosiding/index.php/snhrp/article/view/685/" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-3">
+                <a href="https://snhrp.unipasby.ac.id/prosiding/index.php/snhrp/article/view/685/" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Implikasi Hukum Riset Pemasaran dan Perlindungan Konsumen</h2>
-                        <p class="text-sm text-gray-500">Kajian tentang kerangka hukum yang mengatur praktik riset pemasaran dan dampaknya terhadap hak-hak konsumen.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-3">Implikasi Hukum Riset Pemasaran dan Perlindungan Konsumen</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-3">Kajian tentang kerangka hukum yang mengatur praktik riset pemasaran dan dampaknya terhadap hak-hak konsumen.</p>
+                </div>
             </div>
 
             <!-- CARD 4 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://etd.repository.ugm.ac.id/home/detail_pencarian_downloadfiles/815672" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-4">
+                <a href="https://etd.repository.ugm.ac.id/home/detail_pencarian_downloadfiles/815672" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Analisis Model Pengambilan Keputusan Investor Ritel</h2>
-                        <p class="text-sm text-gray-500">Tesis yang menganalisis faktor-faktor psikologis dan ekonomi yang memengaruhi keputusan investasi oleh investor individu di pasar modal.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-4">Analisis Model Pengambilan Keputusan Investor Ritel</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-4">Tesis yang menganalisis faktor-faktor psikologis dan ekonomi yang memengaruhi keputusan investasi oleh investor individu di pasar modal.</p>
+                </div>
             </div>
 
             <!-- CARD 5 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://jbkt.ub.ac.id/index.php/jbkt/article/viewFile/136/124Bhande" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-5">
+                <a href="https://jbkt.ub.ac.id/index.php/jbkt/article/viewFile/136/124Bhande" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Efektivitas Senyawa Bioaktif terhadap Parasit Tropis</h2>
-                        <p class="text-sm text-gray-500">Penelitian eksperimental mengenai potensi senyawa alami dalam menghambat pertumbuhan dan penyebaran parasit penyebab penyakit tropis.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-5">Efektivitas Senyawa Bioaktif terhadap Parasit Tropis</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-5">Penelitian eksperimental mengenai potensi senyawa alami dalam menghambat pertumbuhan dan penyebaran parasit penyebab penyakit tropis.</p>
+                </div>
             </div>
             
             <!-- CARD 6 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11870168/" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-6">
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11870168/" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Perkembangan Vaksin mRNA dan Respons Imun Tubuh</h2>
-                        <p class="text-sm text-gray-500">Sebuah artikel yang mengulas mekanisme kerja, efikasi, dan tantangan terkini dalam pengembangan vaksin berbasis mRNA.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-6">Perkembangan Vaksin mRNA dan Respons Imun Tubuh</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-6">Sebuah artikel yang mengulas mekanisme kerja, efikasi, dan tantangan terkini dalam pengembangan vaksin berbasis mRNA.</p>
+                </div>
             </div>
             
             <!-- CARD 7 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://www.mdpi.com/2673-4176/4/2/8" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-7">
+                <a href="https://www.mdpi.com/2673-4176/4/2/8" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Aplikasi Lapisan Edibel Berbasis Polisakarida</h2>
-                        <p class="text-sm text-gray-500">Peningkatan kualitas makanan dan bioaktivitas melalui penggunaan lapisan tipis yang dapat dimakan untuk memperpanjang masa simpan buah dan sayuran.</p>
-                    </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-7">Aplikasi Lapisan Edibel Berbasis Polisakarida</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-7">Peningkatan kualitas makanan dan bioaktivitas melalui penggunaan lapisan tipis yang dapat dimakan untuk memperpanjang masa simpan buah dan sayuran.</p>
+                </div>
             </div>
 
             <!-- CARD 8 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden">
-                <a href="https://www.intechopen.com/chapters/79752" target="_blank" rel="noopener noreferrer" class="block h-full">
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-8">
+                <a href="https://www.intechopen.com/chapters/79752" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
-                    <div class="p-4">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-1">Tantangan dan Prospek Energi Terbarukan di Asia Tenggara</h2>
-                        <p class="text-sm text-gray-500">Bab buku yang mengupas isu-isu terkini, kebijakan, dan masa depan implementasi teknologi energi hijau di kawasan Asia Tenggara.</p>
+                </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-8">Tantangan dan Prospek Energi Terbarukan di Asia Tenggara</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-8">Bab buku yang mengupas isu-isu terkini, kebijakan, dan masa depan implementasi teknologi energi hijau di kawasan Asia Tenggara.</p>
+                </div>
+            </div>
+
+            <!-- CARD 9 - Sumber Katadata Pisang (Icon sudah disamakan) -->
+            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-9">
+                <a href="https://databoks.katadata.co.id/tags/pisang" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <!-- Icon disamakan sesuai permintaan: link/external link -->
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-9">Kumpulan Data Statistik Komoditas Pisang</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-9">Informasi dan statistik terkini mengenai produksi, konsumsi, dan harga komoditas pisang di Indonesia dari berbagai sumber data primer.</p>
+                </div>
             </div>
 
         </div>
@@ -167,6 +184,8 @@
             </p>
         </footer>
     </div>
+
+    <!-- Script JavaScript untuk fungsi Ringkas Cepat telah dihapus -->
 
 </body>
 </html>
