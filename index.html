@@ -92,12 +92,23 @@
 </head>
 <body>
 
-    <!-- Tombol Mode Gelap (Fixed Top-Right) - Disesuaikan: p-2, w-5 h-5, top-4 right-4 -->
+    <!-- Tombol Mode Gelap (Fixed Top-Right) - Menggunakan tag <img> -->
+    <!-- CATATAN: Atribut src diatur ke nama file lokal yang Anda tentukan: dark.png dan light.png -->
     <button id="themeToggle" class="fixed top-4 right-4 p-2 rounded-full bg-white text-gray-800 shadow-xl transition-colors duration-300 z-50 hover:bg-gray-100">
-        <!-- Icon Bulan (Mode Terang) -->
-        <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 11.001 11.001 0 0015.354 20.354z"></path></svg>
-        <!-- Icon Matahari (Mode Gelap) -->
-        <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        <!-- Icon Mode Gelap (Muncul saat Mode Terang) -->
+        <!-- Ketika mode LIGT, tampilkan icon DARK (dark.png) untuk toggle ke DARK mode -->
+        <img id="moonIcon" class="w-5 h-5" 
+             src="dark.png" 
+             alt="Dark Mode Icon" 
+             onerror="this.onerror=null; this.src='https://placehold.co/20x20/374151/FBBF24?text=DM';"
+        />
+        <!-- Icon Mode Terang (Muncul saat Mode Gelap) -->
+        <!-- Ketika mode DARK, tampilkan icon LIGHT (light.png) untuk toggle ke LIGHT mode -->
+        <img id="sunIcon" class="w-5 h-5 hidden" 
+             src="light.png" 
+             alt="Light Mode Icon" 
+             onerror="this.onerror=null; this.src='https://placehold.co/20x20/FBBF24/1F2937?text=LM';"
+        />
     </button>
 
     <div class="container mx-auto px-4 py-12">
@@ -286,23 +297,27 @@
             
             // --- FUNGSI DARK MODE ---
             const themeToggle = document.getElementById('themeToggle');
-            const moonIcon = document.getElementById('moonIcon');
-            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon'); // Untuk mode Dark (Icon Bulan/dark.png)
+            const sunIcon = document.getElementById('sunIcon'); // Untuk mode Light (Icon Matahari/light.png)
 
             // 1. Fungsi untuk menerapkan tema
             function applyTheme(isDarkMode) {
                 // Tambahkan/Hapus kelas 'dark-mode' pada body
                 document.body.classList.toggle('dark-mode', isDarkMode);
                 
-                // Toggle ikon
+                // Toggle ikon (menggunakan kelas 'hidden' pada tag <img>)
+                // Jika isDarkMode TRUE, tampilkan Sun Icon (light.png), sembunyikan Moon Icon (dark.png)
+                // Jika isDarkMode FALSE, tampilkan Moon Icon (dark.png), sembunyikan Sun Icon (light.png)
                 moonIcon.classList.toggle('hidden', isDarkMode);
                 sunIcon.classList.toggle('hidden', !isDarkMode);
                 
                 // Perbarui tombol toggle styling
                 if (isDarkMode) {
+                    // Dalam Dark Mode: Tombol jadi gelap, teks/ikon jadi terang/kuning
                     themeToggle.classList.remove('bg-white', 'text-gray-800', 'hover:bg-gray-100');
                     themeToggle.classList.add('bg-gray-800', 'text-yellow-400', 'hover:bg-gray-700');
                 } else {
+                    // Dalam Light Mode: Tombol jadi terang, teks/ikon jadi gelap
                     themeToggle.classList.remove('bg-gray-800', 'text-yellow-400', 'hover:bg-gray-700');
                     themeToggle.classList.add('bg-white', 'text-gray-800', 'hover:bg-gray-100');
                 }
@@ -310,7 +325,6 @@
 
             // 2. Muat tema dari localStorage saat startup
             const storedTheme = localStorage.getItem('theme');
-            // Cek preferensi sistem, jika belum ada di localStorage
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
             let initialDarkMode = false;
