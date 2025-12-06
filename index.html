@@ -10,13 +10,71 @@
         /* Mengatur font default Inter dan tampilan modern */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Warna latar belakang sangat terang */
-            background-image: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Gradien halus */
+            background-color: #f7f7f7; /* Abu-abu dasar sangat terang */
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
+        
+        /* Definisi Keyframes untuk pergerakan ke Kanan (infinite flow) */
+        
+        /* Animasi Cepat */
+        @keyframes waveFlowFast {
+            0% { transform: translateX(0) rotate(5deg); }
+            100% { transform: translateX(200vw) rotate(5deg); } /* Bergerak 200vw ke kanan */
+        }
+        /* Animasi Lambat */
+        @keyframes waveFlowSlow {
+            0% { transform: translateX(0) rotate(-5deg); }
+            100% { transform: translateX(150vw) rotate(-5deg); } /* Bergerak 150vw ke kanan */
+        }
+
+        /* Properti dasar gelombang */
+        .wave-layer {
+            content: '';
+            position: fixed; 
+            top: 0;
+            left: -100vw; /* Dimulai jauh di kiri */
+            height: 100vh;
+            will-change: transform;
+            /* Menggunakan cubic-bezier untuk transisi yang lebih halus dan tidak kaku */
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+            animation-iteration-count: infinite;
+        }
+
+        /* --- Layer 1: Gelombang Cepat (Abu-abu Muda) --- */
+        body::before {
+            @apply wave-layer;
+            z-index: -2;
+            width: 300vw; /* Lebih lebar */
+            /* Menggunakan radial gradient untuk kesan kedalaman warna */
+            background: radial-gradient(circle at 100% 100%, #dcdcdc, #e8e8e8 70%); 
+            opacity: 0.7;
+            /* Bentuk melengkung abstrak */
+            border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; 
+            animation-name: waveFlowFast;
+            animation-duration: 20s; /* Dipercepat: 20 detik */
+        }
+
+        /* --- Layer 2: Gelombang Lambat (Abu-abu Lebih Gelap) --- */
+        body::after {
+            @apply wave-layer;
+            z-index: -3;
+            width: 250vw;
+            /* Menggunakan radial gradient untuk kesan kedalaman warna yang lebih gelap */
+            background: radial-gradient(circle at 100% 100%, #a0a0a0, #c0c0c0 70%); 
+            opacity: 0.5;
+            /* Bentuk melengkung abstrak yang berbeda */
+            border-radius: 60% 40% 30% 70% / 60% 50% 50% 40%; 
+            animation-name: waveFlowSlow;
+            animation-duration: 45s; /* Dipercepat: 45 detik */
+        }
+
         /* Styling untuk card referensi */
         .reference-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Pastikan card memiliki latar belakang putih penuh agar teks mudah dibaca di atas gelombang */
+            background-color: white; 
         }
         .reference-card:hover {
             transform: translateY(-5px);
@@ -184,8 +242,6 @@
             </p>
         </footer>
     </div>
-
-    <!-- Script JavaScript untuk fungsi Ringkas Cepat telah dihapus -->
 
 </body>
 </html>
