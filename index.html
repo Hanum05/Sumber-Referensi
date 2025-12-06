@@ -7,95 +7,104 @@
     <!-- Memuat Tailwind CSS dari CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Mengatur font default Inter dan tampilan modern */
+        /* Menggunakan CSS Variables untuk manajemen tema yang lebih bersih */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7; /* Abu-abu dasar sangat terang */
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            
+            /* --- LIGHT MODE VARIABLES (Default) --- */
+            --bg-main: #f0f4f8; /* background-color sangat terang */
+            --bg-gradient-start: #f0f4f8;
+            --bg-gradient-end: #d9e2ec;
+            --text-primary: #1f2937; /* gray-900 */
+            --text-secondary: #6b7280; /* gray-500/600 */
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb; /* gray-200 */
+            --link-preview-bg: #eff6ff; /* blue-50 */
+            --link-icon: #3b82f6; /* blue-600 */
+            --footer-border: #d1d5db; /* gray-300 */
+        }
+
+        /* --- DARK MODE STYLES --- */
+        body.dark-mode {
+            --bg-main: #1f2937; 
+            --bg-gradient-start: #111827; 
+            --bg-gradient-end: #1f2937;
+            --text-primary: #f3f4f6; /* Light Gray */
+            --text-secondary: #9ca3af; /* Gray-400 */
+            --card-bg: #374151; /* Slate-700 */
+            --card-border: #4b5563; /* Slate-600 */
+            --link-preview-bg: #4b5563; /* Slate-600 */
+            --link-icon: #93c5fd; /* Light Blue-300 */
+            --footer-border: #4b5563;
         }
         
-        /* Definisi Keyframes untuk pergerakan ke Kanan (infinite flow) */
-        
-        /* Animasi Cepat */
-        @keyframes waveFlowFast {
-            0% { transform: translateX(0) rotate(5deg); }
-            100% { transform: translateX(200vw) rotate(5deg); } /* Bergerak 200vw ke kanan */
-        }
-        /* Animasi Lambat */
-        @keyframes waveFlowSlow {
-            0% { transform: translateX(0) rotate(-5deg); }
-            100% { transform: translateX(150vw) rotate(-5deg); } /* Bergerak 150vw ke kanan */
-        }
-
-        /* Properti dasar gelombang */
-        .wave-layer {
-            content: '';
-            position: fixed; 
-            top: 0;
-            left: -100vw; /* Dimulai jauh di kiri */
-            height: 100vh;
-            will-change: transform;
-            /* Menggunakan cubic-bezier untuk transisi yang lebih halus dan tidak kaku */
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
-            animation-iteration-count: infinite;
-        }
-
-        /* --- Layer 1: Gelombang Cepat (Abu-abu Muda) --- */
-        body::before {
-            @apply wave-layer;
-            z-index: -2;
-            width: 300vw; /* Lebih lebar */
-            /* Menggunakan radial gradient untuk kesan kedalaman warna */
-            background: radial-gradient(circle at 100% 100%, #dcdcdc, #e8e8e8 70%); 
-            opacity: 0.7;
-            /* Bentuk melengkung abstrak */
-            border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; 
-            animation-name: waveFlowFast;
-            animation-duration: 20s; /* Dipercepat: 20 detik */
-        }
-
-        /* --- Layer 2: Gelombang Lambat (Abu-abu Lebih Gelap) --- */
-        body::after {
-            @apply wave-layer;
-            z-index: -3;
-            width: 250vw;
-            /* Menggunakan radial gradient untuk kesan kedalaman warna yang lebih gelap */
-            background: radial-gradient(circle at 100% 100%, #a0a0a0, #c0c0c0 70%); 
-            opacity: 0.5;
-            /* Bentuk melengkung abstrak yang berbeda */
-            border-radius: 60% 40% 30% 70% / 60% 50% 50% 40%; 
-            animation-name: waveFlowSlow;
-            animation-duration: 45s; /* Dipercepat: 45 detik */
+        /* Apply CSS variables to global elements */
+        body {
+            background-color: var(--bg-main);
+            background-image: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-primary);
         }
 
         /* Styling untuk card referensi */
         .reference-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Pastikan card memiliki latar belakang putih penuh agar teks mudah dibaca di atas gelombang */
-            background-color: white; 
+            background-color: var(--card-bg);
+            border-color: var(--card-border);
         }
         .reference-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #3b82f6; /* Border biru saat di-hover */
+            border-color: #3b82f6; /* Border biru saat di-hover (tetap) */
         }
-        /* Custom styling for link preview section */
+
+        /* Override specific text and component colors to use variables */
+        h1, h2 { color: var(--text-primary); }
+        .text-gray-600, .text-gray-500 { color: var(--text-secondary); }
+
         .link-preview {
-            background-color: #eff6ff; /* Background biru muda */
+            background-color: var(--link-preview-bg); 
+            border-color: var(--card-border);
         }
-        .link-icon {
-            color: #3b82f6; /* Pastikan semua ikon tautan berwarna biru */
+        .link-icon, .link-preview span {
+            color: var(--link-icon); 
+        }
+
+        /* Search Input Styling */
+        #searchInput {
+            background-color: var(--card-bg);
+            border-color: var(--card-border);
+            color: var(--text-primary);
+        }
+        /* Placeholder color */
+        #searchInput::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+        .text-gray-400 { color: var(--text-secondary); opacity: 0.8; }
+
+        /* Footer border color */
+        footer {
+            border-color: var(--footer-border);
         }
     </style>
 </head>
 <body>
 
+    <!-- Tombol Mode Gelap (Fixed Top-Right) -->
+    <button id="themeToggle" class="fixed top-6 right-6 p-3 rounded-full bg-white text-gray-800 shadow-xl transition-colors duration-300 z-50 hover:bg-gray-100">
+        <!-- Icon Bulan (Mode Terang) -->
+        <svg id="moonIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 11.001 11.001 0 0015.354 20.354z"></path></svg>
+        <!-- Icon Matahari (Mode Gelap) -->
+        <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+    </button>
+
     <div class="container mx-auto px-4 py-12">
         
-        <header class="text-center mb-12">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2 tracking-tight">
+        <header class="text-center mb-8">
+            <!-- H1 dan P menggunakan warna teks yang diatur oleh variabel CSS -->
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 tracking-tight">
                 Sumber Referensi
             </h1>
             <p class="text-lg text-gray-600">
@@ -103,132 +112,142 @@
             </p>
         </header>
 
+        <!-- Input Pencarian -->
+        <div class="mb-10 max-w-2xl mx-auto">
+            <div class="relative">
+                <!-- Hapus kelas bg-white dari input -->
+                <input type="text" id="searchInput" placeholder="Cari referensi berdasarkan judul atau deskripsi..." class="w-full p-3 pl-12 border border-gray-300 rounded-lg shadow-md focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                <!-- Icon Pencarian -->
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+        </div>
+        
         <!-- Daftar Referensi dalam Grid Responsif -->
-        <div id="references-grid" class="grid gap-6 grid-cols-2 lg:grid-cols-4">
+        <div id="references-grid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             
-            <!-- CARD 1 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-1">
+            <!-- CARD 1 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Stabilitas Emulsi Minyak Cengkeh Kitosan Matriks Polimer Analisis Fisik Antimikroba" id="card-1">
                 <a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2018.1454946#d1e265" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-1">Stabilitas Emulsi Minyak Cengkeh dalam Matriks Kitosan</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-1">Stabilitas Emulsi Minyak Cengkeh dalam Matriks Kitosan</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-1">Analisis sifat fisik dan antimikroba emulsi yang menggunakan minyak cengkeh dalam matriks polimer alami.</p>
                 </div>
             </div>
 
-            <!-- CARD 2 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-2">
+            <!-- CARD 2 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Pemanfaatan Bioteknologi Pertanian Modern Tinjauan Aplikasi Tanaman Pangan" id="card-2">
                 <a href="https://www.scielo.br/j/babt/a/mBcQkLmpjJFBhhcpQ6pGHMz/?format=html&lang=en" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-2">Pemanfaatan Bioteknologi dalam Pertanian Modern</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-2">Pemanfaatan Bioteknologi dalam Pertanian Modern</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-2">Tinjauan mengenai aplikasi bioteknologi terbaru yang digunakan untuk peningkatan hasil dan kualitas tanaman pangan.</p>
                 </div>
             </div>
 
-            <!-- CARD 3 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-3">
+            <!-- CARD 3 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Implikasi Hukum Riset Pemasaran Perlindungan Konsumen Kajian Kerangka Hak-Hak" id="card-3">
                 <a href="https://snhrp.unipasby.ac.id/prosiding/index.php/snhrp/article/view/685/" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-3">Implikasi Hukum Riset Pemasaran dan Perlindungan Konsumen</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-3">Implikasi Hukum Riset Pemasaran dan Perlindungan Konsumen</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-3">Kajian tentang kerangka hukum yang mengatur praktik riset pemasaran dan dampaknya terhadap hak-hak konsumen.</p>
                 </div>
             </div>
 
-            <!-- CARD 4 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-4">
+            <!-- CARD 4 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Analisis Model Pengambilan Keputusan Investor Ritel Tesis Psikologis Ekonomi Pasar Modal" id="card-4">
                 <a href="https://etd.repository.ugm.ac.id/home/detail_pencarian_downloadfiles/815672" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-4">Analisis Model Pengambilan Keputusan Investor Ritel</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-4">Analisis Model Pengambilan Keputusan Investor Ritel</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-4">Tesis yang menganalisis faktor-faktor psikologis dan ekonomi yang memengaruhi keputusan investasi oleh investor individu di pasar modal.</p>
                 </div>
             </div>
 
-            <!-- CARD 5 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-5">
+            <!-- CARD 5 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Efektivitas Senyawa Bioaktif Parasit Tropis Penelitian Eksperimental Senyawa Alami" id="card-5">
                 <a href="https://jbkt.ub.ac.id/index.php/jbkt/article/viewFile/136/124Bhande" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-5">Efektivitas Senyawa Bioaktif terhadap Parasit Tropis</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-5">Efektivitas Senyawa Bioaktif terhadap Parasit Tropis</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-5">Penelitian eksperimental mengenai potensi senyawa alami dalam menghambat pertumbuhan dan penyebaran parasit penyebab penyakit tropis.</p>
                 </div>
             </div>
             
-            <!-- CARD 6 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-6">
+            <!-- CARD 6 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Perkembangan Vaksin mRNA Respons Imun Tubuh Mekanisme Kerja Efikasi Tantangan Terkini" id="card-6">
                 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11870168/" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-6">Perkembangan Vaksin mRNA dan Respons Imun Tubuh</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-6">Perkembangan Vaksin mRNA dan Respons Imun Tubuh</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-6">Sebuah artikel yang mengulas mekanisme kerja, efikasi, dan tantangan terkini dalam pengembangan vaksin berbasis mRNA.</p>
                 </div>
             </div>
             
-            <!-- CARD 7 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-7">
+            <!-- CARD 7 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Aplikasi Lapisan Edibel Polisakarida Peningkatan Kualitas Bioaktivitas Makanan Masa Simpan" id="card-7">
                 <a href="https://www.mdpi.com/2673-4176/4/2/8" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-7">Aplikasi Lapisan Edibel Berbasis Polisakarida</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-7">Aplikasi Lapisan Edibel Berbasis Polisakarida</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-7">Peningkatan kualitas makanan dan bioaktivitas melalui penggunaan lapisan tipis yang dapat dimakan untuk memperpanjang masa simpan buah dan sayuran.</p>
                 </div>
             </div>
 
-            <!-- CARD 8 -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-8">
+            <!-- CARD 8 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Tantangan Prospek Energi Terbarukan Asia Tenggara Bab Buku Isu-Isu Kebijakan Masa Depan" id="card-8">
                 <a href="https://www.intechopen.com/chapters/79752" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-8">Tantangan dan Prospek Energi Terbarukan di Asia Tenggara</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-8">Tantangan dan Prospek Energi Terbarukan di Asia Tenggara</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-8">Bab buku yang mengupas isu-isu terkini, kebijakan, dan masa depan implementasi teknologi energi hijau di kawasan Asia Tenggara.</p>
                 </div>
             </div>
 
-            <!-- CARD 9 - Sumber Katadata Pisang (Icon sudah disamakan) -->
-            <div class="reference-card bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" id="card-9">
+            <!-- CARD 9 - Hapus kelas bg-white dan text-gray-800 -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Kumpulan Data Statistik Komoditas Pisang Produksi Konsumsi Harga Indonesia" id="card-9">
                 <a href="https://databoks.katadata.co.id/tags/pisang" target="_blank" rel="noopener noreferrer" class="block">
                     <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
                         <!-- Icon disamakan sesuai permintaan: link/external link -->
                         <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        <span class="text-sm font-medium text-blue-600 hover:underline">Pratinjau Link</span>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
                     </div>
                 </a>
                 <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-1" id="title-9">Kumpulan Data Statistik Komoditas Pisang</h2>
+                    <h2 class="text-lg font-semibold mb-1" id="title-9">Kumpulan Data Statistik Komoditas Pisang</h2>
                     <p class="text-sm text-gray-500 mb-3" id="description-9">Informasi dan statistik terkini mengenai produksi, konsumsi, dan harga komoditas pisang di Indonesia dari berbagai sumber data primer.</p>
                 </div>
             </div>
@@ -242,6 +261,78 @@
             </p>
         </footer>
     </div>
+
+    <!-- Script JavaScript untuk fungsi Pencarian dan Dark Mode -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- FUNGSI PENCARIAN ---
+            const searchInput = document.getElementById('searchInput');
+            const referencesGrid = document.getElementById('references-grid');
+            const cards = referencesGrid.querySelectorAll('.reference-card');
+
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                
+                cards.forEach(card => {
+                    const keywords = card.getAttribute('data-keywords').toLowerCase();
+                    
+                    if (query === '' || keywords.includes(query)) {
+                        card.style.display = 'block'; 
+                    } else {
+                        card.style.display = 'none';  
+                    }
+                });
+            });
+            
+            // --- FUNGSI DARK MODE ---
+            const themeToggle = document.getElementById('themeToggle');
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+
+            // 1. Fungsi untuk menerapkan tema
+            function applyTheme(isDarkMode) {
+                // Tambahkan/Hapus kelas 'dark-mode' pada body
+                document.body.classList.toggle('dark-mode', isDarkMode);
+                
+                // Toggle ikon
+                moonIcon.classList.toggle('hidden', isDarkMode);
+                sunIcon.classList.toggle('hidden', !isDarkMode);
+                
+                // Perbarui tombol toggle styling
+                if (isDarkMode) {
+                    themeToggle.classList.remove('bg-white', 'text-gray-800', 'hover:bg-gray-100');
+                    themeToggle.classList.add('bg-gray-800', 'text-yellow-400', 'hover:bg-gray-700');
+                } else {
+                    themeToggle.classList.remove('bg-gray-800', 'text-yellow-400', 'hover:bg-gray-700');
+                    themeToggle.classList.add('bg-white', 'text-gray-800', 'hover:bg-gray-100');
+                }
+            }
+
+            // 2. Muat tema dari localStorage saat startup
+            const storedTheme = localStorage.getItem('theme');
+            // Cek preferensi sistem, jika belum ada di localStorage
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            let initialDarkMode = false;
+            if (storedTheme === 'dark') {
+                initialDarkMode = true;
+            } else if (storedTheme === null && prefersDark) {
+                initialDarkMode = true;
+            }
+            
+            applyTheme(initialDarkMode);
+            
+            // 3. Tambahkan listener ke tombol toggle
+            themeToggle.addEventListener('click', () => {
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                const newMode = !isDarkMode;
+                
+                applyTheme(newMode);
+                // Simpan preferensi tema ke localStorage
+                localStorage.setItem('theme', newMode ? 'dark' : 'light');
+            });
+        });
+    </script>
 
 </body>
 </html>
