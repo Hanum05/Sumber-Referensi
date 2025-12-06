@@ -263,6 +263,21 @@
                 </div>
             </div>
 
+            <!-- CARD 10 - TAMBAHAN BARU -->
+            <div class="reference-card border border-gray-200 rounded-xl shadow-lg hover:shadow-xl overflow-hidden" data-keywords="Kitosan Lapisan Edibel Minyak Cengkeh Nanoemulsi Mangga Potong Masa Simpan" id="card-10">
+                <a href="https://www.researchgate.net/publication/346975437_Development_of_chitosan_edible_coatings_incorporated_with_clove_essential_oil_nanoemulsions_and_its_effect_on_shelf_life_of_fresh-cut_mangoes" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="link-preview p-4 border-b border-blue-100 flex items-center justify-center">
+                        <!-- Icon disamakan sesuai permintaan: link/external link -->
+                        <svg class="w-6 h-6 link-icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span class="text-sm font-medium hover:underline">Pratinjau Link</span>
+                    </div>
+                </a>
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold mb-1" id="title-10">Pengembangan Lapisan Edibel Kitosan Nanoemulsi Minyak Cengkeh pada Mangga Potong</h2>
+                    <p class="text-sm text-gray-500 mb-3" id="description-10">Penelitian tentang pengembangan lapisan tipis (edible coating) berbasis kitosan yang mengandung nanoemulsi minyak cengkeh untuk memperpanjang masa simpan mangga yang telah dipotong.</p>
+                </div>
+            </div>
+
         </div>
         <!-- Akhir Daftar Referensi -->
 
@@ -284,10 +299,18 @@
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.toLowerCase().trim();
                 
-                cards.forEach(card => {
+                // Gunakan querySelectorAll lagi untuk memastikan nodeList terbaru
+                const currentCards = referencesGrid.querySelectorAll('.reference-card');
+
+                currentCards.forEach(card => {
+                    // Mengambil keywords, judul, dan deskripsi untuk pencarian yang lebih baik
                     const keywords = card.getAttribute('data-keywords').toLowerCase();
+                    const titleText = card.querySelector('h2').textContent.toLowerCase();
+                    const descriptionText = card.querySelector('p').textContent.toLowerCase();
                     
-                    if (query === '' || keywords.includes(query)) {
+                    const searchableText = `${keywords} ${titleText} ${descriptionText}`;
+
+                    if (query === '' || searchableText.includes(query)) {
                         card.style.display = 'block'; 
                     } else {
                         card.style.display = 'none';  
